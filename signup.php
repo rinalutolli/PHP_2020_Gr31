@@ -97,7 +97,7 @@ $(document).ready(function(){
    <h3><b>Confirm Password</b></h3>
   <input type="password" name="password11" placeholder="Confirm Password"><br/><br/><br/>
 
-  <input type="submit" class="btn btn-primary" value="Sign Up" name="signup" id="signup_btn">
+    <input type="submit" class="btn btn-primary" value="Sign Up" name="signup" id="signup_btn"></b>
 
 </form>
 <br>
