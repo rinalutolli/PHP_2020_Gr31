@@ -4,7 +4,7 @@
 	$f_name=$_POST['f_name'];
 	$l_name=$_POST['l_name'];
 	$email=$_POST['email'];
-	$birthday=$_POST['birthday'];
+	$birthday=$_POST['birthday'];//validimi
 	$gender=$_POST['gender'];
 	$password1=$_POST['password'];
 	$mobile=$_POST['mobile'];
