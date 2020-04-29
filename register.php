@@ -75,6 +75,8 @@
 				<b>Email Address is already taken. Sign up with another email address</b>
 			</div>
 		";
+			
+			//regjistrimi i userave
 		exit();
 		}
 
