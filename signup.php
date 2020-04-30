@@ -3,7 +3,7 @@
 <head>
   <title>SignUp</title>
   
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"> </script>
   <script src="jquery-1.11.2.min.js"></script>
 
 <script>
@@ -73,7 +73,7 @@ $(document).ready(function(){
       border-radius: 10px;
     }
   </style>
-</head>
+  </head>
 <body>
   <div class="grad">
   <h4 id="rv"><b>Sign Up to be a part of us</b></h4><br/>
