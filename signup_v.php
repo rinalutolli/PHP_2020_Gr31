@@ -77,11 +77,29 @@ $(document).ready(function(){
 <body>
   <div class="grad">
   <h4 id="rv"><b>Sign Up to be a part of us</b></h4><br/>
-  <form method="post" action="<?php $_PHP_SELF ?>">
+  <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
   <h3><b>Name</b></h3>
-  <input type="text" id="name" name="name" placeholder="Enter Name">
+  <input type="text" id="name" name="fname" placeholder="Enter Name">
+  <h5 style="color:red">
+  <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['fname'];
+    if (empty($name)) {
+        echo "Name is empty!";
+    }
+}
+?></h5>
   <h3><b>Surname</b></h3>
   <input type="text" id="surname" name="surname" placeholder="Enter Surname">
+    <h5 style="color:red">
+  <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $fsurname = $_POST['surname'];
+    if (empty($fsurname)) {
+        echo "Surame is empty!";
+    }
+}
+?></h5>
   <h3><b>Birthday</b></h3>
   <input type="date" id="birthday" name="birthday">
   <h3><b>Gender</b></h3>
@@ -90,15 +108,34 @@ $(document).ready(function(){
   <h3><b>Email</b></h3>
   <input type="email" id="email" name="email" placeholder="Enter Email">
   <h3><b>Password</b></h3>
-  <input type="password" id="password" name="password" placeholder="New Password">
+  <input type="password" id="password" name="fpassword" placeholder="New Password">
+  <h5 style="color:red">
+  <?php
+  if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    $password = $_POST['fpassword'];
+    if(strlen($password) < 6 ) {
+        echo "Your password is ".strlen($_POST["fpassword"])." characters. Password must be at least 6 characters!";
+    } 
+}
+?></h5>
   <h3><b>Confirm Password</b></h3>
-  <input type="c_password" name="c_password" placeholder="Confirm Password"><br/><br/><br/>
+  <input type="password" name="c_password" placeholder="Confirm Password">
+  <h5 style="color:red">
+  <?php
+  if ($_SERVER["REQUEST_METHOD"] == "POST"){
+  $password = $_POST['c_password'];
+  $password1 = $_POST['fpassword'];
+  if($password!== $password1 ) {
+  echo "Your passwords dont match!";
+  } else {
+  echo "You confirmed your password.";
+  }
+}
+?></h5>
 
   <input name="add" type="submit" id="add" value="Sign Up">
 
 </form>
-<br>
-<br>
 
 </div>
 
@@ -113,19 +150,19 @@ if (!$conn) {
 
 if(isset($_POST['add'])){ 
 
-  $name = $_POST['name'];
+  $fname = $_POST['fname'];
   $surname = $_POST['surname'];
   $birthday = $_POST['birthday'];
   $surname = $_POST['surname'];
   $gender = $_POST['gender'];
   $email = $_POST['email'];
-  $password = $_POST['password'];
+  $fpassword = $_POST['fpassword'];
   $c_password = $_POST['c_password'];
   
   $sql = "INSERT INTO users (name, surname, birthday, gender, email, password, c_password)
-  VALUES ('$name', '$surname', '$birthday', '$gender', '$email', '$password', '$c_password')";
+  VALUES ('$fname', '$surname', '$birthday', '$gender', '$email', '$fpassword', '$c_password')";
 
-  $retval = mysqli_query($conn, $sql );
+  $retval = mysqli_query($conn, $sql);
   if(! $retval )
   {
   die('Nuk mund te shtohen te dhenat ne tabele: ' . mysqli_error($conn));
