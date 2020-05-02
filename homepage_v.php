@@ -182,7 +182,10 @@ Sorry, your browser does not support inline SVG.
 
               </td>
               <td>
-                <p id="p"><a href="#"><b>MUSIC&ARTS</b></a></p>
+                <p id="p"><a href="#"><b><?php
+                                         $str = " MUSIC&ARTS ";
+                                         echo trim($str);
+                                         ?></b></a></p>
 
               </td>
             </tr>
@@ -199,8 +202,11 @@ Sorry, your browser does not support inline SVG.
                       News("Sport"); ?></p>
               </td>
               <td>
-                <P id="p1"><?php
-                      News("Promi"); ?></P>
+                <P id="p1"><?php 
+                $vargu = array("Last","Promi","news.");
+                $news1= implode(" ",$vargu);
+                echo $news1; 
+                ?></P>
               </td>
               <td>
                 <p id="p1"><?php
@@ -233,7 +239,11 @@ Sorry, your browser does not support inline SVG.
                 <td>Fashion Icon of the decade<br> goes for Kendall Jenner .</td>
                 <td>Inter Milan ready to bid<br> £25m for Chelsea star</td>
                 <td>Justin Bieber Shares New Video for “Yummy”: Watch</td>
-                <td>After 15 Years, The New York Musical Festival Has Shut Down For Good</td>
+                <td><?php
+                $number = 15;
+                $str = "The New York";
+                printf("After %u Years, %s Musical Festival Has Shut Down For Good.",$number,$str);
+                ?></td>
               </tr>
             </table>
 
@@ -251,7 +261,9 @@ Sorry, your browser does not support inline SVG.
     </td>
     </tr>
       <td>
-        <p>Diet Coke (or Coca-Cola Light) is a sugar-free and no-calorie soft drink produced and distributed by The Coca-Cola Company. It contains artificial sweeteners instead of sugar.  </p>
+        <p><?php
+        echo substr("Diet Coke (or Coca-Cola Light) is a sugar-free and no-calorie soft drink produced and distributed by The Coca-Cola Company. It contains artificial sweeteners instead of sugar.",5);
+        ?></p>
       </td>
     </tr>
     <tr>
