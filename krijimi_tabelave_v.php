@@ -23,6 +23,13 @@ password VARCHAR(50),
 c_password VARCHAR(50),
 data_regjistrimit TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )";
+
+$sql = "CREATE TABLE login (
+lid INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+lemail VARCHAR(50),
+lpassword VARCHAR(50),
+data_loginit TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)";
  
 $retval = mysqli_query($conn, $sql );
 if(! $retval )
