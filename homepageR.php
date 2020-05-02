@@ -6,11 +6,11 @@
   <link rel="stylesheet" href="./css/css.css">
   <script type="text/javascript" src="./js/js.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
+ 
 <script src="jquery-1.11.2.min.js"></script>
   <script>
 $(function(){
-
+ 
   $("#btn3").click(function(){
     $("#cu").hide();
   });
@@ -33,31 +33,30 @@ function clickCounter() {
     }
 }
 </script>
-
+ 
   <header>
     <div id="u1">
     <nav id="mainMenu">
     <ul><?php
-    $links = array(
-     array("Sign Up","//localhost/projekti/signup.php"),
-     array("Sign In","//localhost/projekti/login.php"),
-     array("Contact Us","#copyright"),
-     ssarray("Feedbacks","//localhost/projekti/feedbacks.php")
-);
-
-foreach ($links as $urlitem){ 
-echo "<li><a href='       ".$urlitem[1]."'>  ".$urlitem[0].  "</a></li>"; 
-
-}
+      $links = array(
+               array("Sign Up","//localhost/projekti/signup.php"),
+               array("Sign In","//localhost/projekti/login.php"),
+               array("Contact Us","#copyright"),
+               array("Feedbacks","//localhost/projekti/feedbacks.php")
+               );
+ 
+              foreach ($links as $urlitem){
+              echo "<li><a href='       ".$urlitem[1]."'>  ".$urlitem[0].  "</a></li>";
+ 
+              }
 ?>
-           <li><input id="nowButton" type="button" value="Date&Time" style="float: right; background-color: #333333;"></li>
        </ul>
      
    </nav>
  </div>
  <div id="svg" style="float: right;margin-left:30px;padding-top: 2em;">
  <svg height="130" width="250">
-  <defs> 
+  <defs>
     <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%"
       style="stop-color:black;stop-opacity:1" />
@@ -72,30 +71,33 @@ Sorry, your browser does not support inline SVG.
 </svg>
 </div>
    <h1><?php
-define("Emri", "MAG MAGAZINE",true);
-echo Emri;
-?></h1>
+       define("Emri", "MAG MAGAZINE");
+       echo Emri;
+       ?>
+   </h1>
    <h3><?php $faqet = array("ALL THE LATEST NEWS & INFORMATIONS IN THE WORLD", "FASHION", "SPORTS"); echo $faqet[0];?></h3>
-
+ 
    <nav id="secondaryMenu">
     <ul>
-      <li><a href="#">HOMEPAGE </a></li> 
+      <li><a href="#">HOMEPAGE </a></li>
            <li><a href="fashion.php">FASHION</a></li>
            <li><a href="vesa.php">SPORTS</a></li>
-           
+       
                   </ul>
    </nav>
-
+ 
   </header>
-  
-
-
+ 
+ 
+ 
    <section id="part1">
          <div class="left1" style="float: left; box-shadow: 10px 10px 5px grey;">
           <a href="#">
-
+ 
         <img id="gg" src="./images/australia.jpg" alt="Image can't load."></img>
-        <p style="color:black;"> The 
+        <p style="color:black;"> The evacuees walked down the gangway of the giant naval vessel to the dock, each carrying just a few items of luggage. Some held infants and others their dogs, whose legs were still shaky from the 20-hour voyage down the coast of AustraliaThey were weary, and their clothes smelled of smoke, but the terrible infernos were finally behind them.</p></a>
+       
+ 
       </div>
     <div class="right1" style="float: right;">
       <table>
@@ -104,8 +106,8 @@ echo Emri;
         <img id="gg" src="./images/pensilvania.jpg" alt="Image can't load."></img></td>
         <td>Multiple people were killed in a major crash involving a tour bus, semi-trucks, and several other vehicles on the Pennsylvania Turnpike early Sunday in the western part of the state that left dozens injured, according to officials.</td></a>
       </tr>
-      
-
+     
+ 
       <tr>
         <td><a href="#">
         <img id="gg" src="./images/gjermania.jpg" alt="Image can't load."></img></td>
@@ -116,22 +118,20 @@ echo Emri;
         <td><a href="#">
         <img id="gg" src="./images/john.jpg" alt="Image can't load."></img></td>
         <td>John Bolton congratulates those involved in 'decisive' airstrike that killed Iranian general</td></a>
-          
-         </tr> 
-       </table>evacuees walked down the gangway of the giant naval vessel to the dock, each carrying just a few items of luggage. Some held infants and others their dogs, whose legs were still shaky from the 20-hour voyage down the coast of AustraliaThey were weary, and their clothes smelled of smoke, but the terrible infernos were finally behind them.</p></a>
-        
-
+         
+         </tr>
+       </table>
       </div>
     </section>
-
+ 
     <section id="part2">
       <div class="left2" style="float: left;">
         <table>
           <tr>
             <td>
-              
+             
               <img  id="gg" src="./images/iran.jpg" alt="Image can't load.">
-            
+           
             </td>
             <td>
               <p>The tensions between Washington and Tehran reached a fever pitch early Friday.</p>
@@ -172,67 +172,60 @@ echo Emri;
           <table cellpadding="5">
             <tr>
               <td>
-                <p id="p"><a href="fashion.html"><b>FASHION</b></a></p>
+                <p id="p"><a href="fashion.php"><b>FASHION</b></a></p>
               </td>
               <td>
-                <p id="p"><a href="vesa.html"><b>SPORT</b></a></p>
+                <p id="p"><a href="vesa.php"><b>SPORT</b></a></p>
               </td>
               <td>
                 <P id="p"><a href=""><b>PROMI WORLD</b></a></P>
+ 
               </td>
               <td>
-                <p id="p"><a href="#"><b>MUSIC&ARTS</b></a></p>
+                <p id="p"><a href="#"><b><?php
+$str = " MUSIC&ARTS ";
 
+echo trim($str);
+?></b></a></p>
+ 
               </td>
             </tr>
              <tr>
               <td>
                 <p id="p1"><?php
-                function news($fname) {
-                  echo " Last $fname news.<br>";
-                   }
-
-                 news("Fashion");
-
-                  ?>.</p>
+                      function News($fname) {
+                      echo "Last $fname news.<br>";
+                      }
+                      News("Fashion"); ?></p>
               </td>
               <td>
                 <p id="p1"><?php
-                
-                   news("Sport");
-
-                   ?>.</p>
+                      News("Sport"); ?></p>
               </td>
               <td>
-              <P id="p1"><?php
-
-                      news("Promi");
-
-                      ?></P>
+                <P id="p1"><?php $vargu = array("Last","Promi","news.");
+$news1= implode(" ",$vargu);
+echo $news1; ?></P>
               </td>
               <td>
                 <p id="p1"><?php
-                          
-
-                         news("Music&Art");
-
-                         ?>.</p>
+                      News("Music&Art"); ?></p>
               </td>
             </tr>
             <tr>
               <td class="td1">
                 <div id="u2">
-                  <a href="fashion.html">
+                  <a href="fashion.php">
                 <img  src="./images/foto.jpg" id="img1" alt="Image can't load."></td></div>
               </a>
                 <td class="td1">
                 <div id="u2">
-                  <a href="vesa.html">
+                  <a href="vesa.php">
                 <img  src="./images/inter.jpg" id="img1" alt="Image can't load."></td></div>
               </a>
                 <td class="td1">
                 <div id="u2">
-                  <a href="promiworld.html">
+                  <a href="#">
                 <img  src="./images/justin,png.png" id="img1" alt="Image can't load."></td></div>
               </a>
                 <td class="td1">
@@ -245,49 +238,55 @@ echo Emri;
                 <td>Fashion Icon of the decade<br> goes for Kendall Jenner .</td>
                 <td>Inter Milan ready to bid<br> £25m for Chelsea star</td>
                 <td>Justin Bieber Shares New Video for “Yummy”: Watch</td>
-                <td>After 15 Years, The New York Musical Festival Has Shut Down For Good</td>
+                <td><?php
+$number = 15;
+$str = "The New York";
+printf("After %u Years, %s Musical Festival Has Shut Down For Good.",$number,$str);
+?></td>
               </tr>
             </table>
-
+ 
          </div>
       <div class="right2" style="float: right">
         <table>
   <tr>
   <th>Adverstisement</th>
     <th>Categories </th>
-    
+   
     <tr>
     <td rowspan="20">
-      
+     
       <img src="./images/cocacola.jpg" alt="Image can't load.">
     </td>
     </tr>
       <td>
-        <p>Diet Coke (or Coca-Cola Light) is a sugar-free and no-calorie soft drink produced and distributed by The Coca-Cola Company. It contains artificial sweeteners instead of sugar.  </p>
+        <p><?php
+echo substr("Diet Coke (or Coca-Cola Light) is a sugar-free and no-calorie soft drink produced and distributed by The Coca-Cola Company. It contains artificial sweeteners instead of sugar.",5);
+?>  </p>
       </td>
     </tr>
     <tr>
       <td>
         <p>Coca-Cola Vanilla (commonly referred to as Vanilla Coke) is a vanilla-flavored version of Coca-Cola, introduced in 2002 but subsequently discontinued in North America and the United Kingdom in 2005, only remaining available as a fountain drink. </p>
-        
+       
       </td>
       </tr>
       <tr>
         <td>
           <p>Coca-Cola Cherry (originally marketed as and still widely referred to as Cherry Coke) is a cherry-flavored version of Coca-Cola. It is produced and distributed by The Coca-Cola Company and its bottlers in the United States and some international markets. </p>
-        
-          
+       
+         
         </td>
-      
-
+     
+ 
 </table>
 </div>
-
+ 
 </section>
  <footer>
-
-        
-    
+ 
+       
+   
       <table cellspacing="40">
          <tr >
           <td id="td2" ><mark> News </td>
@@ -300,36 +299,36 @@ echo Emri;
        <td>News is information about current events. This may be provided through many different media: word of mouth, printing, postal systems.</td><td>News is information about current events. This may be provided through many different media: word of mouth, printing, postal systems.</td><td>News is information about current events. This may be provided through many different media: word of mouth, printing, postal systems. </td><td>News is information about current events. This may be provided through many different media: word of mouth, printing, postal systems. </td>
                 <td>News is information about current events. This may be provided through many different media: word of mouth, printing, postal systems. </td>
               </tr>
-
-
+ 
+ 
       </table>
-
+ 
       <div id="copyright" >
-
-
+ 
+ 
       <address &#235>
       <h3 id="cu"><b>Contact Us</b></h3>
       <button id="btn3" onclick="clickCounter()">Hide</button>
       <button id="btn4" onclick="clickCounter()">Show</button>
-
+ 
       <div id="result"></div><br>
       Email: <a href="mailto:webmaster@example.com">Mag Magazine</a>.<br/>
-      Facebook: <a href="https://www.facebook.com/" target="_blank"><img src="./images/fb.jpg" alt="Image can't load." style="width: 30px; height: 20px;" ></a><br> 
+      Facebook: <a href="https://www.facebook.com/" target="_blank"><img src="./images/fb.jpg" alt="Image can't load." style="width: 30px; height: 20px;" ></a><br>
       Instagram: <a href="https://www.instagram.com/" target="_blank"><img src="./images/insta.jpg" alt="Image can't load." style="width: 20px; height: 16px;"></a><br><br>
       Visit us at :
       Prishtin&#235, Republic of Kosovo
       10000 <br/>
    </address>
    <canvas id="Canvas" width="500" height="100" style="border:3px solid #d3d3d3;">
-    
+   
   </div>
  
-  
+ 
 </footer>
-  
-  
-
-
+ 
+ 
+ 
+ 
 </body>
 <script>
 var c = document.getElementById("Canvas");
@@ -340,7 +339,7 @@ ctx.fillText("Thanks for visiting us",15,50);
 <script type="text/javascript">
     var data= new Date();
     var ora=data.getHours();
-
+ 
     if (10 <= ora && ora < 15) {
       if (document.body) {
         document.body.background = "./images/4.jpg";
