@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Sign In</title>
+  <title>Sign In</title>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="jquery-1.11.2.min.js"></script>
 <script>
@@ -17,12 +17,12 @@
 </script>
 
 
-	<style type="text/css">
+  <style type="text/css">
   .grad {
   background-image: radial-gradient(white, lightgrey, grey);
 }
 
-		 body
+     body
   {
     background-color: lightgray;
     font-family: sans-serif;
@@ -54,26 +54,26 @@
     }
     a
     {
-    	text-decoration: none;
-    	color:grey;
+      text-decoration: none;
+      color:grey;
 
     }
     a:hover
     {
-    	background-color:black;
-    	border-radius: 10px;
-    	padding:0.5em;
+      background-color:black;
+      border-radius: 10px;
+      padding:0.5em;
     }
     
     input
     {
-    	padding: 0.5em;
-    	border-radius: 5px;
-    	border-color: black;
+      padding: 0.5em;
+      border-radius: 5px;
+      border-color: black;
     }
     button
     {
-    	background-color: black;
+      background-color: black;
       color: white;
       padding: 1em;
       border-radius: 10px;
@@ -95,68 +95,92 @@
     </style>
 
  
-
+   
 </head>
 <body >
-	<div class="grad">
-    <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-		<h4 id="rv">Sign In to our community</h4>
-		<h3>Email address</h3>
-		<input type="email" name="lemail" placeholder="Enter your email address">
-  <h5 style="color:red">
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST"){
-     $email = $_POST['lemail'];
-    $vargu = explode("@",$email);
-    echo "Username: ". $vargu[0]. "<br/>";
-    echo "Domeni: ". $vargu[1]."<br/>"; 
+
+  <div class="grad">
+  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post"> 
+    <h4 id="rv">Sign In to our community</h4>
+    <h3>Email address</h3>
+    <input type="text" name="lemail" placeholder="Enter your email address" autocomplete="on">
+    <h5 style="color:red">
+<?php
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $email = $_POST['lemail'];
+  if (empty($email)) {
+      echo "Email is empty!<br>";
   }
-  ?></h5>
-		<h3>Password</h3>
-		<input type="password" name="lpassword" keygen="password" placeholder="Enter your password"><br/>
-	 <input type="submit" name="add" id="add" value="Sign in">
-		<p id="fp"><a href="#">Forgot your password?</a></p>
-		
-	</div>
-	<div id="cr" class="grad">
-		<h3>New to Mag Magazine?</h3>
-		<h3><a href="signup.php">Sign Up</a></h38>
+   else if (!preg_match('/[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z0-9\.\-]+$/',$email)) {
+    echo "This is an invalid email.<br>";
+  }
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+  $email = $_POST['lemail'];
+  $vargu = explode("@",$email);
+ 
+  
+  if (empty($vargu[0])) {
+      echo "There is no username and domain.";}
+  elseif (empty($vargu[1])){
+    echo "There is no domain.";
+  }
+  else {
+    echo "Username: ". $vargu[0]. "<br/>";
+    echo "Domain: ". $vargu[1]."<br/>";}
+    
+   }
+
+?></h5>
+    <h3>Password</h3>
+    <input type="password" name="lpassword" keygen="password" placeholder="Enter your password"><br/><br/>
+    <input type="submit" name="add" id="add" value="Sign  in">
+
+    <p id="fp"><a href="#">Forgot your password?</a></p>
+    
+  </div>
+
+  <div id="cr" class="grad">
+    <h3>New to Mag Magazine?</h3>
+    <h3><a href="signup.php">Sign Up</a></h38>
   </form>  
-	</div>
+
+  </div>
   <?php
 
 require("dbconfig.php");
 
-$conn = mysqli_connect(servername, username, password, dbname); 
-if (!$conn) {  
-   die("Connection failed: " . mysqli_connect_error()); 
+$conn = mysqli_connect(servername, username, password, dbname);
+if (!$conn) {
+die("Connection failed: " . mysqli_connect_error());
 }
 
-if(isset($_POST['add'])){ 
+if(isset($_POST['add'])){
 
- 
-  $lemail = $_POST['lemail'];
+
+$lemail = $_POST['lemail'];
 $lpassword=$_POST['lpassword'];
 
-  
-  $sql = "INSERT INTO login (lemail, lpassword)
-  VALUES ('$lemail','$lpassword')";
 
-  $retval = mysqli_query($conn, $sql );
-  if(! $retval )
-  {
-  die('Nuk mund te shtohen te dhenat ne tabele: ' . mysqli_error($conn));
-  }
+$sql = "INSERT INTO login (lemail, lpassword)
+VALUES ('$lemail','$lpassword')";
 
-  $last_id = mysqli_insert_id($conn); //ID e rekordit te fundit
-  echo "Te dhenat u shtuan me sukses.\nID eshte: ". $last_id;
-  mysqli_close($conn);
+$retval = mysqli_query($conn, $sql );
+if(! $retval )
+{
+die('Nuk mund te shtohen te dhenat ne tabele: ' . mysqli_error($conn));
+}
+
+$last_id = mysqli_insert_id($conn); //ID e rekordit te fundit
+echo "Te dhenat u shtuan me sukses.\nID eshte: ". $last_id;
+mysqli_close($conn);
 }
 
 ?>
-  
 
-		
+    
 
 </body>
 </html>
