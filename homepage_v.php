@@ -80,7 +80,22 @@ Sorry, your browser does not support inline SVG.
    <nav id="secondaryMenu">
     <ul>
       <li><a href="#">HOMEPAGE </a></li> 
-           <li><a href="fashion.php">FASHION</a></li>
+           <li><a href="fashion.php"><?php
+class faqja {
+  public $name;
+  
+
+  function __construct($name) {
+    $this->name = $name; 
+  }
+  function get_name() {
+    return $this->name;
+  }
+}
+
+$fashion= new faqja("FASHION");
+echo $fashion->get_name();
+?></a></li>
            <li><a href="vesa.php">SPORTS</a></li>
         
                   </ul>
@@ -308,7 +323,43 @@ Sorry, your browser does not support inline SVG.
 
 
       <address &#235>
-      <h3 id="cu"><b>Contact Us</b></h3>
+      <h3 id="cu"><b><?php
+class Word {
+
+public $words;
+public $numbers;
+
+
+function set_words($words) {
+$this->words = $words;
+}
+
+function get_words() {
+return $this->words;
+}
+}
+$word1 = new Word();
+$word2 = new Word();
+$word2->set_words('Contact');
+
+echo $word1->get_words();
+echo $word2->get_words();
+
+class Sentence extends Word  
+ {
+      public function space(){
+        echo " ";
+      }
+      
+}
+$sentence1= new Sentence();
+
+$sentence1->set_words('us, below are our informations:');
+$sentence1->space();
+echo $sentence1->get_words();
+?></b></h3>
+
+
       <button id="btn3" onclick="clickCounter()">Hide</button>
       <button id="btn4" onclick="clickCounter()">Show</button>
 
