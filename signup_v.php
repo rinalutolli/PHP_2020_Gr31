@@ -87,6 +87,9 @@ $(document).ready(function(){
     if (empty($name)) {
         echo "Name is empty!";
     }
+    if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+      echo "Only letters and white space allowed.";
+    }
 }
 ?></h5>
   <h3><b>Surname</b></h3>
@@ -98,6 +101,9 @@ $(document).ready(function(){
     if (empty($fsurname)) {
         echo "Surame is empty!";
     }
+     if (!preg_match("/^[a-zA-Z ]*$/",$fsurname)) {
+      echo "Only letters and white space allowed.";
+    }
 }
 ?></h5>
   <h3><b>Birthday</b></h3>
@@ -106,7 +112,19 @@ $(document).ready(function(){
   <input type="radio" id="gender" name="gender" value='F'>F
   <input type="radio" id='gender' name="gender" value='M'>M
   <h3><b>Email</b></h3>
-  <input type="email" id="email" name="email" placeholder="Enter Email">
+  <input type="text" id="email" name="email" placeholder="Enter Email">
+   <h5 style="color:red">
+  <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+    if (empty($email)) {
+        echo "Email is empty!";
+    }
+     if(preg_match('/[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z0-9\.\-]+$/',$email) === 0) {
+      echo "This is an invalid email.";
+    }
+}
+?></h5>
   <h3><b>Password</b></h3>
   <input type="password" id="password" name="fpassword" placeholder="New Password">
   <h5 style="color:red">
@@ -127,7 +145,8 @@ $(document).ready(function(){
   $password1 = $_POST['fpassword'];
   if($password!== $password1 ) {
   echo "Your passwords dont match!";
-  } else {
+  } 
+  else if(strlen($password1) > 0 )  {
   echo "You confirmed your password.";
   }
 }
