@@ -109,8 +109,35 @@ function test_input($data) {
             <h3><b>Comment</b></h3><br/>
                     <textarea name="comment" rows="5" cols="60">
                     </textarea><br><br>
+                    <?php
+                    if ($_SERVER["REQUEST_METHOD"] == "POST"){
+                          $fp=fopen('comments/comment.txt', 'w');
+
+                           fwrite($fp,$_POST["comment"]);
+                           fclose($fp);
+                           
+}
+
+  ?>
                       <input type="submit" name="submit" value="Submit">  
     </form>
+
+
+
+    <?php
+class artikulli {
+  public $name;
+
+  function __construct($name) {
+    $this->name = $name; 
+  }
+  function __destruct() {
+    echo "<h2>Thank you for your {$this->name}!</h2>"; 
+  }
+}
+
+$faqja = new artikulli("time");
+?>
 </body>
  
 </html>
