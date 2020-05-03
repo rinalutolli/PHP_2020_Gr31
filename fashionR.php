@@ -95,7 +95,10 @@ function validateForm() {
            <li><input id="nowButton" type="button" value="Date&Time" style="float: right;"></li>
        </ul>
    </nav>
-   <h1>MAG MAGAZINE</h1>
+   <h1><?php
+define("Emri", "MAG MAGAZINE");
+echo Emri;
+?></h1>
    <h3><?php $faqet = array("ALL THE LATEST NEWS & INFORMATIONS IN THE WORLD", "FASHION", "SPORTS"); echo $faqet[1];?></h3>
 
    <nav id="secondaryMenu">
