@@ -99,7 +99,7 @@ $(document).ready(function(){
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fsurname = $_POST['surname'];
     if (empty($fsurname)) {
-        echo "Surame is empty!";
+        echo "Surname is empty!";
     }
      if (!preg_match("/^[a-zA-Z ]*$/",$fsurname)) {
       echo "Only letters and white space allowed.";
@@ -108,9 +108,30 @@ $(document).ready(function(){
 ?></h5>
   <h3><b>Birthday</b></h3>
   <input type="date" id="birthday" name="birthday">
+  <h5 style="color:red">
+  <?php
+   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $bday = $_POST['birthday'];
+    if (empty($bday)) {
+        echo "Birthday is empty!";
+      }
+    }
+        ?>
+      </h5>
   <h3><b>Gender</b></h3>
-  <input type="radio" id="gender" name="gender" value='F'>F
-  <input type="radio" id='gender' name="gender" value='M'>M
+  <input type="radio"  name="gender" value='F'>F
+  <input type="radio"  name="gender" value='M'>M
+  <h5 style="color:red">
+  <?php
+if (isset($_POST['add'])) {
+if(isset($_POST['gender']))
+{
+echo "";
+}
+else{ echo "Please choose any gender button.";}
+}
+?>
+  </h5>
   <h3><b>Email</b></h3>
   <input type="text" id="email" name="email" placeholder="Enter Email">
    <h5 style="color:red">
@@ -120,7 +141,7 @@ $(document).ready(function(){
     if (empty($email)) {
         echo "Email is empty!";
     }
-     if(preg_match('/[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z0-9\.\-]+$/',$email) === 0) {
+    elseif(preg_match('/[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z0-9\.\-]+$/',$email) === 0) {
       echo "This is an invalid email.";
     }
 }
@@ -129,13 +150,13 @@ $(document).ready(function(){
   <input type="password" id="password" name="fpassword" placeholder="New Password">
   <h5 style="color:red">
   <?php
-  if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    $password = $_POST['fpassword'];
-    if(strlen($password) < 6 ) {
-        echo "Your password is ".strlen($_POST["fpassword"])." characters. Password must be at least 6 characters!";
-    }
-}
-?></h5>
+   if ($_SERVER["REQUEST_METHOD"] == "POST")
+if (preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*$#", $_POST['fpassword'])){
+echo "";
+} else {
+echo "Password should contain eight characters including one uppercase letter, one lowercase letter, and one number or special character.";
+}?>
+</h5>
   <h3><b>Confirm Password</b></h3>
   <input type="password" name="c_password" placeholder="Confirm Password">
   <h5 style="color:red">
@@ -172,14 +193,13 @@ if(isset($_POST['add'])){
   $fname = $_POST['fname'];
   $surname = $_POST['surname'];
   $birthday = $_POST['birthday'];
-  $surname = $_POST['surname'];
   $gender = $_POST['gender'];
   $email = $_POST['email'];
   $fpassword = $_POST['fpassword'];
   $c_password = $_POST['c_password'];
  
   $sql = "INSERT INTO users (name, surname, birthday, gender, email, password, c_password)
-  VALUES ('$fname', '$surname', '$birthday', '$gender', '$email', '$fpassword', '$c_password')";
+  VALUES ('$fname', '$surname', '$birthday', '$gender', '$email', md5('$fpassword'), md5('$c_password'))";
  
   $retval = mysqli_query($conn, $sql);
   if(! $retval )
