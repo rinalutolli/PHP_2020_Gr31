@@ -1,3 +1,28 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $email = $_POST['lemail'];
+setcookie("lemail", $email , time() + (86400 * 30), "/");
+setcookie("lemail", "", time() - 3600);
+}
+?>
+<?php
+session_start();
+$message="";
+if(count($_POST)>0) {
+ $con = mysqli_connect('localhost:3307','vesa','Vesa1234','ushtrimet2') or die('Unable To connect');
+$result = mysqli_query($con,"SELECT * FROM login WHERE lemail='" . $_POST["lemail"] . "' and lpassword = '". $_POST["lpassword"]."'");
+$row  = mysqli_fetch_array($result);
+if(is_array($row)) {
+$_SESSION["lemail"] = $row['lemail'];
+$_SESSION["lpassword"] = $row['lpassword'];
+} else {
+$message = "Invalid Username or Password!";
+}
+}
+if(isset($_SESSION["lemail"])) {
+header("Location:index.php");
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -101,6 +126,7 @@
 
   <div class="grad">
   <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post"> 
+   
     <h4 id="rv">Sign In to our community</h4>
     <h3>Email address</h3>
     <input type="text" name="lemail" placeholder="Enter your email address" autocomplete="on">
@@ -135,7 +161,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 ?></h5>
     <h3>Password</h3>
     <input type="password" name="lpassword" keygen="password" placeholder="Enter your password"><br/><br/>
-    <input type="submit" name="add" id="add" value="Sign  in">
+    <input type="submit" name="add" id="add" value="Sign in">
 
     <p id="fp"><a href="#">Forgot your password?</a></p>
     
