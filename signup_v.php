@@ -157,9 +157,8 @@ else{ echo "Please choose any gender button.";}
 }
 ?></h5>
   <h3><b>Confirm Password</b></h3>
-  <input type="password" name="c_password" placeholder="Confirm Password">
-  <h5 style="color:red">
-  <?php
+  <input type="password" name="c_password" placeholder="Confirm Password"><br><br>
+    <?php
   if ($_SERVER["REQUEST_METHOD"] == "POST"){
   $password = $_POST['c_password'];
   $password1 = $_POST['fpassword'];
@@ -178,6 +177,8 @@ else{ echo "Please choose any gender button.";}
  
 </div>
  
+<h3 style="color:black; text-align: center; padding: 3px;">
+
 <?php
  
 require("dbconfig.php");
@@ -192,11 +193,16 @@ if(isset($_POST['add'])){
   $fname = $_POST['fname'];
   $surname = $_POST['surname'];
   $birthday = $_POST['birthday'];
-  $surname = $_POST['surname'];
   $gender = $_POST['gender'];
   $email = $_POST['email'];
   $fpassword = $_POST['fpassword'];
   $c_password = $_POST['c_password'];
+
+  
+  if(empty($fname) || empty($surname) || empty($birthday) || empty($gender) || empty($email) || empty($fpassword) || empty($c_password)){
+    echo "Please fill all the fields!";   
+    exit(0);
+  }
 
   
  
@@ -216,6 +222,7 @@ if(isset($_POST['add'])){
 }
  
 ?>
+</h3>
  
  
 </body>
