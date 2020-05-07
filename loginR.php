@@ -1,5 +1,4 @@
 <?php
-require("dbconfig.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $email = $_POST['lemail'];
 setcookie("lemail", $email , time() + (86400 * 30), "/");
@@ -10,14 +9,15 @@ setcookie("lemail", "", time() - 3600);
 session_start();
 $message="";
 if(count($_POST)>0) {
-$conn = mysqli_connect(servername, username, password, dbname) or die('Unable To connect');
+ $con = mysqli_connect('localhost:3307','root','','ushtrimet2') or die('Unable To connect');
 $result = mysqli_query($con,"SELECT * FROM login WHERE lemail='" . $_POST["lemail"] . "' and lpassword = '". $_POST["lpassword"]."'");
 $row  = mysqli_fetch_array($result);
 if(is_array($row)) {
 $_SESSION["lemail"] = $row['lemail'];
 $_SESSION["lpassword"] = $row['lpassword'];
 } else {
-$message = "Invalid Username or Password!";
+echo "Invalid Username or Password!";
+exit(0);
 }
 }
 if(isset($_SESSION["lemail"])) {
@@ -188,6 +188,7 @@ if(isset($_POST['add'])){
  
 $lemail = $_POST['lemail'];
 $lpassword=$_POST['lpassword'];
+ 
  
  
 $sql = "INSERT INTO login (lemail, lpassword)
