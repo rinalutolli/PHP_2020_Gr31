@@ -16,7 +16,8 @@ if(is_array($row)) {
 $_SESSION["lemail"] = $row['lemail'];
 $_SESSION["lpassword"] = $row['lpassword'];
 } else {
-$message = "Invalid Username or Password!";
+echo "Invalid Username or Password!";
+exit(0);
 }
 }
 if(isset($_SESSION["lemail"])) {
@@ -187,6 +188,7 @@ if(isset($_POST['add'])){
 
 $lemail = $_POST['lemail'];
 $lpassword=$_POST['lpassword'];
+
 
 
 $sql = "INSERT INTO login (lemail, lpassword)
