@@ -158,15 +158,13 @@ else{ echo "Please choose any gender button.";}
 ?></h5>
   <h3><b>Confirm Password</b></h3>
   <input type="password" name="c_password" placeholder="Confirm Password"><br><br>
-    <?php
+  <h5 style="color:red">
+  <?php
   if ($_SERVER["REQUEST_METHOD"] == "POST"){
   $password = $_POST['c_password'];
   $password1 = $_POST['fpassword'];
   if($password!== $password1 ) {
   echo "Your passwords dont match!";
-  }
-  else if(strlen($password1) > 0 )  {
-  echo "You confirmed your password.";
   }
 }
 ?></h5>
@@ -177,7 +175,7 @@ else{ echo "Please choose any gender button.";}
  
 </div>
  
-<h3 style="color:black; text-align: center; padding: 3px;">
+<h3 style="color:red; text-align: center; padding: 3px;">
 
 <?php
  
@@ -204,7 +202,26 @@ if(isset($_POST['add'])){
     exit(0);
   }
 
-  
+  if ($_SERVER["REQUEST_METHOD"] == "POST"){
+$email = $_POST['email'];
+
+$result = mysqli_query($conn,"SELECT * FROM users WHERE email='" . $_POST["email"] . "'");
+
+
+$num = mysqli_num_rows($result);
+if($num>0){
+  echo"Email already taken";
+  exit(0);
+}
+}
+
+    if (!preg_match("/^[a-zA-Z]*$/",$fname) || !preg_match("/^[a-zA-Z ]*$/",$fsurname) || preg_match('/[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z0-9\.\-]+$/',$email) === 0 || strlen($password) < 6 || $password!== $password1) {
+      echo "You didn't fill the fields correctly!";
+      exit(0);
+
+    }
+
+
  
   $sql = "INSERT INTO users (name, surname, birthday, gender, email, password, c_password)
   VALUES ('$fname', '$surname', '$birthday', '$gender', '$email', md5('$fpassword'), md5('$c_password'))";
