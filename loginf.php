@@ -9,15 +9,12 @@ setcookie("lemail", "", time() - 3600);
 session_start();
 $message="";
 if(count($_POST)>0) {
- $con = mysqli_connect('localhost:3307','vesa','Vesa1234','ushtrimet2') or die('Unable To connect');
+ $con = mysqli_connect('localhost','root','','ushtrime') or die('Unable To connect');
 $result = mysqli_query($con,"SELECT * FROM login WHERE lemail='" . $_POST["lemail"] . "' and lpassword = '". $_POST["lpassword"]."'");
 $row  = mysqli_fetch_array($result);
 if(is_array($row)) {
 $_SESSION["lemail"] = $row['lemail'];
 $_SESSION["lpassword"] = $row['lpassword'];
-} else {
-echo "Invalid Username or Password!";
-exit(0);
 }
 }
 if(isset($_SESSION["lemail"])) {
@@ -186,10 +183,39 @@ die("Connection failed: " . mysqli_connect_error());
 if(isset($_POST['add'])){
  
  
-$lemail = $_POST['lemail'];
-$lpassword=$_POST['lpassword'];
+$lemail  = $_POST['lemail'];
+$lpassword =  $_POST['lpassword']; 
+
+if(empty($lemail) || empty($lpassword) ){
+  echo "Please fill all the fields!";
+  exit(0);
+  }
+ 
+if ($_SERVER["REQUEST_METHOD"] == "POST")
+{
+  $stmt = mysqli_prepare($conn,"select * from login where lemail=? and lpassword=md5(?)");
+  mysqli_stmt_bind_param($stmt, "ss",$lemail, $lpassword);
+  mysqli_stmt_execute($stmt);
+  $result = mysqli_stmt_get_result($stmt);  
+ 
+
+ 
+$num = mysqli_num_rows($result);
+if($num==0){
+  function function_alert($message) {
+     
+    // Display the alert box  
+    echo "<script>alert('$message');</script>";
+}
  
  
+// Function call
+function_alert("This email does not exist!");
+ 
+ 
+  exit(0);
+}
+}
  
 $sql = "INSERT INTO login (lemail, lpassword)
 VALUES ('$lemail','$lpassword')";
