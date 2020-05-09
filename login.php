@@ -15,9 +15,7 @@ $row  = mysqli_fetch_array($result);
 if(is_array($row)) {
 $_SESSION["lemail"] = $row['lemail'];
 $_SESSION["lpassword"] = $row['lpassword'];
-} else {
-$message = "Invalid Username or Password!";
-}
+} 
 }
 if(isset($_SESSION["lemail"])) {
 header("Location:index.php");
@@ -169,7 +167,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
   <div id="cr" class="grad">
     <h3>New to Mag Magazine?</h3>
-    <h3><a href="signup.php">Sign Up</a></h38>
+    <h3><a href="signup.php">Sign Up</a></h3>
   </form>  
 
   </div>
@@ -188,6 +186,33 @@ if(isset($_POST['add'])){
 $lemail = $_POST['lemail'];
 $lpassword=$_POST['lpassword'];
 
+ if(empty($lemail) || empty($lpassword) ){
+    echo "Please fill all the fields!";  
+    exit(0);
+  }
+
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+  $stmt = mysqli_prepare($conn,"select * from login where lemail=? and lpassword=md5(?)");
+  mysqli_stmt_bind_param($stmt, "ss",$lemail, $lpassword);
+  mysqli_stmt_execute($stmt);
+  $result = mysqli_stmt_get_result($stmt); 
+
+$num = mysqli_num_rows($result);
+if($num==0){
+  function function_alert($message) { 
+      
+    // Display the alert box  
+    echo "<script>alert('$message');</script>"; 
+} 
+  
+  
+// Function call 
+function_alert("This email does not exist!"); 
+  
+
+  exit(0);
+}
+}
 
 $sql = "INSERT INTO login (lemail, lpassword)
 VALUES ('$lemail','$lpassword')";
