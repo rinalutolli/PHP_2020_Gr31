@@ -158,15 +158,13 @@ else{ echo "Please choose any gender button.";}
 ?></h5>
   <h3><b>Confirm Password</b></h3>
   <input type="password" name="c_password" placeholder="Confirm Password"><br><br>
-    <?php
+  <h5 style="color:red">
+  <?php
   if ($_SERVER["REQUEST_METHOD"] == "POST"){
   $password = $_POST['c_password'];
   $password1 = $_POST['fpassword'];
   if($password!== $password1 ) {
   echo "Your passwords dont match!";
-  }
-  else if(strlen($password1) > 0 )  {
-  echo "You confirmed your password.";
   }
 }
 ?></h5>
@@ -177,7 +175,7 @@ else{ echo "Please choose any gender button.";}
  
 </div>
  
-<h3 style="color:black; text-align: center; padding: 3px;">
+<h3 style="color:red; text-align: center; padding: 3px;">
  
 <?php
  
@@ -190,19 +188,38 @@ if (!$conn) {
  
 if(isset($_POST['add'])){
  
-  $fname = $_POST['fname'];
-  $surname = $_POST['surname'];
-  $birthday = $_POST['birthday'];
+  $fname =md5($_POST['fname']);
+  $surname = md5($_POST['surname']);
+  $birthday =  md5($_POST['birthday']);
   $gender = $_POST['gender'];
-  $email = $_POST['email'];
-  $fpassword = $_POST['fpassword'];
-  $c_password = $_POST['c_password'];
+  $email = md5($_POST['email']);
+  $fpassword = md5( $_POST['fpassword']);
+  $c_password = md5($_POST['c_password']);
  
  
   if(empty($fname) || empty($surname) || empty($birthday) || empty($gender) || empty($email) || empty($fpassword) || empty($c_password)){
     echo "Please fill all the fields!";  
     exit(0);
   }
+ 
+  if ($_SERVER["REQUEST_METHOD"] == "POST"){
+$email = $_POST['email'];
+ 
+$result = mysqli_query($conn,"SELECT * FROM users WHERE email='" . $_POST["email"] . "'");
+ 
+ 
+$num = mysqli_num_rows($result);
+if($num>0){
+  echo"Email already taken";
+  exit(0);
+}
+}
+ 
+    if (!preg_match("/^[a-zA-Z]*$/",$fname) || !preg_match("/^[a-zA-Z ]*$/",$fsurname) || preg_match('/[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z0-9\.\-]+$/',$email) === 0 || strlen($password) < 6 || $password!== $password1) {
+      echo "You didn't fill the fields correctly!";
+      exit(0);
+ 
+    }
  
  
  
