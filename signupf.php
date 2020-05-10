@@ -118,7 +118,7 @@ $(document).ready(function(){
     } ?>
       </h5>
   <h3><b>Gender</b></h3>
-  <input type="radio"  name="gender" value='F'>F
+  <input type="radio"  name="gender" value='F' checked="checked">F
   <input type="radio"  name="gender" value='M'>M
   <h5 style="color:red">
   <?php
@@ -151,8 +151,8 @@ else{ echo "Please choose any gender button.";}
   <?php
   if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $password = $_POST['fpassword'];
-    if(strlen($password) < 6 ) {
-        echo "Your password is ".strlen($_POST["fpassword"])." characters. Password must be at least 6 characters!";
+    if (!preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#", $password )) {
+        echo "Password must be a minimum of 8 characters, must contain at least 1 number, one uppercase character, one lowercase character and one special character.";
     }
 }
 ?></h5>
@@ -196,7 +196,6 @@ if(isset($_POST['add'])){
   $fpassword = md5( $_POST['fpassword']);
   $c_password = md5($_POST['c_password']);
  
- 
   if(empty($fname) || empty($surname) || empty($birthday) || empty($gender) || empty($email) || empty($fpassword) || empty($c_password)){
     echo "Please fill all the fields!";  
     exit(0);
@@ -215,7 +214,7 @@ if($num>0){
 }
 }
  
-    if (!preg_match("/^[a-zA-Z]*$/",$fname) || !preg_match("/^[a-zA-Z ]*$/",$fsurname) || preg_match('/[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z0-9\.\-]+$/',$email) === 0 || strlen($password) < 6 || $password!== $password1) {
+    if (!preg_match("/^[a-zA-Z]*$/",$fname) || !preg_match("/^[a-zA-Z ]*$/",$fsurname) || preg_match('/[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z0-9\.\-]+$/',$email) === 0 || !preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#", $password) || $password!== $password1) {
       echo "You didn't fill the fields correctly!";
       exit(0);
  
