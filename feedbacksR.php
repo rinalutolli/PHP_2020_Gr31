@@ -41,8 +41,8 @@ background-size: 250px;
 <body>
     <?php
 // define variables and set to empty values
-$nameErr = $surnameErr = $emailErr = $genderErr = $websiteErr = "";
-$name = $surname = $email = $gender = $comment = $website = "";
+$nameErr = $surnameErr = $emailErr = "";
+$name = $surname = $email = $comment = "";
  
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["name"])) {
@@ -96,8 +96,18 @@ function test_input($data) {
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
    
            
+ 
             <h3><b>Name</b></h3>
   <input type="text" name="name" placeholder="Enter Name" ><span class="error">* <?php echo $nameErr;?></span>
+   <h5 style="color:red">
+  <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'];
+    if (strlen($name) < 2) {
+        echo "Your name is ".strlen($_POST["name"])." character. Name must have at least 2 characters!";
+    }
+}
+?></h5>
   <h3 id="surname"><b>Surname</b></h3>
  
   <input type="text" name="surname" placeholder="Enter Surname" ><span class="error">* <?php echo $surnameErr;?></span>
@@ -106,36 +116,32 @@ function test_input($data) {
   <input type="text" name="email" placeholder="Enter Email" ><span class="error">* <?php echo $emailErr;?></span>
  
  
-            <h3><b>Feedback</b></h3><br/>
+            <h3><b>Comment</b></h3><br/>
                     <textarea name="comment" rows="5" cols="60">
-                    </textarea><br><br>
-                    <?php
+                    </textarea><br><br> <?php
                     if ($_SERVER["REQUEST_METHOD"] == "POST"){
-	                        $fp=fopen('comments/comment.txt', 'w');
-
-	                         fwrite($fp,$_POST["comment"]);
-	                         fclose($fp);
-	                         
-}
-
-	?>
-                      <input type="submit" name="submit" value="Submit">
-
+                          $fp=fopen('comments/comment.txt', 'w');
+                           fwrite($fp,$_POST["comment"]);
+                           fclose($fp);
+                        } ?>
+                      <input type="submit" name="submit" value="Submit">  <br><br>
     </form>
-    <?php
+ 
+<?php
 class artikulli {
   public $name;
-
+ 
   function __construct($name) {
-    $this->name = $name; 
+    $this->name = $name;
   }
   function __destruct() {
-    echo "<h2>Thank you for your {$this->name}!</h2>"; 
+    echo "<h2>Thank you for your {$this->name}!</h2>";
   }
 }
-
+ 
 $faqja = new artikulli("time");
 ?>
-</body>
  
+ 
+</body>
 </html>
