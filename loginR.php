@@ -1,26 +1,3 @@
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $email = $_POST['lemail'];
-setcookie("lemail", $email , time() + (86400 * 30), "/");
-setcookie("lemail", "", time() - 3600);
-}
-?>
-<?php
-session_start();
-$message="";
-if(count($_POST)>0) {
-$con = mysqli_connect('localhost','root','','ushtrime') or die('Unable To connect');
-$result = mysqli_query($con,"SELECT * FROM loginn WHERE lemail='" . $_POST["lemail"] . "' and lpassword = '". $_POST["lpassword"]."'");
-$row  = mysqli_fetch_array($result);
-if(is_array($row)) {
-$_SESSION["lemail"] = $row['lemail'];
-$_SESSION["lpassword"] = $row['lpassword'];
-}
-}
-if(isset($_SESSION["lemail"])) {
-header("Location:index.php");
-}
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -133,7 +110,7 @@ header("Location:index.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $email = $_POST['lemail'];
   if (empty($email)) {
-      echo "Email is empty!";
+      echo "Email is empty!<br>";
   }
    else if (!preg_match('/[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z0-9\.\-]+$/',$email)) {
     echo "This is an invalid email.";
@@ -183,18 +160,24 @@ die("Connection failed: " . mysqli_connect_error());
  
 if(isset($_POST['add'])){
  
- 
+
+
+  if ($_SERVER["REQUEST_METHOD"] == "POST"){
+
 $lemail = $_POST['lemail'];
 $lpassword=$_POST['lpassword'];
+
+
 
 
  if(empty($lemail) || empty($lpassword) ){
     echo "Please fill all the fields!";  
     exit(0);
   }
+ }
  
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
-  $stmt = mysqli_prepare($conn,"select * from loginn where lemail=? and lpassword=md5(?)");
+  $stmt = mysqli_prepare($conn,"select * from users where email=? and password=md5(?)");
   mysqli_stmt_bind_param($stmt, "ss",$lemail, $lpassword);
   mysqli_stmt_execute($stmt);
   $result = mysqli_stmt_get_result($stmt);  
@@ -206,18 +189,15 @@ if($num==0){
     // Display the alert box  
     echo "<script>alert('$message');</script>";
 }
- 
- 
+
 // Function call
 function_alert("This email does not exist!");
- 
- 
   exit(0);
 }
 
 }
  
-$sql = "INSERT INTO loginn (lemail, lpassword)
+$sql = "INSERT INTO users (email, password)
 VALUES ('$lemail','$lpassword')";
  
 $retval = mysqli_query($conn, $sql );
@@ -232,6 +212,24 @@ mysqli_close($conn);
 }
  
 ?>
+
+<?php
+session_start();
+$message="";
+if(count($_POST)>0) {
+ $con = mysqli_connect('localhost:3307','vesa','Vesa1234','ushtrimet2') or die('Unable To connect');
+$result = mysqli_query($con,"SELECT * FROM users WHERE email='" . $_POST["lemail"] . "' and password = '". $_POST["lpassword"]."'");
+$row  = mysqli_fetch_array($result);
+if(is_array($row)) {
+$_SESSION["lemail"] = $row['email'];
+$_SESSION["lpassword"] = $row['password'];
+}
+}
+if(isset($_SESSION["lemail"])) {
+header("Location:index.php");
+}
+?>
+
  </h5>
    
  
