@@ -9,9 +9,7 @@
 <script>
   
   
-  
-  
-  
+
 $(document).ready(function(){
   $("#button2").click(function(){
     $("#image1").fadeToggle(1000);
