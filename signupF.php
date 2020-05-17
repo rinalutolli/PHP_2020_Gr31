@@ -115,7 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <input type="email" id="email"name="email" placeholder="Enter Email">
   <?php 
  ?>
-   <h3><b>Password</b></h3>
+   <h3><b>Password</b></h3> //password
   <input type="password" id="password" name="fpassword" placeholder="New Password">
   <h5 style="color:red">
 <?php
