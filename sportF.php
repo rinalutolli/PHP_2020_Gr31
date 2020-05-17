@@ -25,7 +25,9 @@ $(document).ready(function(){
     "./images/sta
                       
                       
-                      diumi.jpg", "./images/lala.jpg",
+                      diumi.jp
+                      
+                      g", "./images/lala.jpg",
     "./images/kupa.jpg","./images/tenis.jpg",
     "./images/ath.jpg","./images/golf.jpg"];
         var i = 0;
