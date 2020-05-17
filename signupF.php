@@ -92,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } 
 }
 ?></h5>
-  <h3><b>Surname</b></h3>//surname
+  <h3><b>Surname</b></h3>//surnameee
   <input type="text" id="surname" name="surname" placeholder="Enter Surname">
   <h5 style="color:red">
   <?php
