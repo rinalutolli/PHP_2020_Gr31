@@ -20,7 +20,10 @@ $(document).ready(function(){
       <script>
  var links = ["","","","","","","",""];
         var images = ["./images/topi.jpg","./images/kids.jpg",
-    "./images/stadiumi.jpg", "./images/lala.jpg",
+    "./images/sta
+                      
+                      
+                      diumi.jpg", "./images/lala.jpg",
     "./images/kupa.jpg","./images/tenis.jpg",
     "./images/ath.jpg","./images/golf.jpg"];
         var i = 0;
