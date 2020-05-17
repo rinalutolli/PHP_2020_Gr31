@@ -76,7 +76,7 @@ $(document).ready(function(){
     }
   </style>
 </head>
-<body>
+<body> //trupi
   <div class="grad">
   <h4 id="rv"><b>Sign Up to be a part of us</b></h4><br/>
   <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post"> 
