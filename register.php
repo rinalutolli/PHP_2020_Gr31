@@ -60,7 +60,7 @@
 				<b>Mobile number $mobile is not valid</b>
 			</div>
 		";
-		exit();
+		exit(); //kodi per me dale prej if it
 		}
 
 		//check for available user-details
