@@ -69,6 +69,9 @@ $(document).ready(function(){
       text-decoration: none;
       color:white;
     }
+    
+    
+    
     #signup_btn
     {
       background-color: black;
