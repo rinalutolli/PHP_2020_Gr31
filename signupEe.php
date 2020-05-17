@@ -34,6 +34,8 @@ $(document).ready(function(){
       margin: 10px 400px 10px 400px;
       border: outset grey;
       border-width:5px;
+      
+      
       padding: 2em;
     }
     input
