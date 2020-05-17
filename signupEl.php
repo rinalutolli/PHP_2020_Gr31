@@ -24,7 +24,7 @@ $(document).ready(function(){
   .grad {
   background-image: linear-gradient(to right, lightgray , white);
 }
-  body
+  body //trupi
   {
     background-color: lightgray;
     font-family: sans-serif;
