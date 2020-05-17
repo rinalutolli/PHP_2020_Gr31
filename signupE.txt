@@ -127,7 +127,7 @@ if(isset($_POST['add'])){
 $birthday=$_POST['birthday'];
 $gender=$_POST['gender'];
 
-	$email = $_POST['email'];
+	$email = $_POST['email']; //email
 $password=$_POST['password'];
 $c_password=$_POST['c_password'];
 	
