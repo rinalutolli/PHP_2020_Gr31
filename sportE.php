@@ -82,7 +82,7 @@ function myFunction() {
   document.getElementById("demo").innerHTML = text;
 }
 </script>
-<style>
+<style> //style
 * {box-sizing: border-box;}
 
 .container {
