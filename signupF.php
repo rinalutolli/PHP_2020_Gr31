@@ -107,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <h3><b>Birthday</b></h3>
   <input type="date" id="birthday" name="birthday">
   
-  <h3><b>Gender</b></h3>
+  <h3><b>Gender</b></h3>//gender
   <input type="radio" id="gender" name="gender" value='F'>F
   <input type="radio" id='gender' name="gender" value='M'>M
 
