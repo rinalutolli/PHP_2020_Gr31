@@ -147,7 +147,7 @@ else{ echo "Please choose any gender button.";}
 ?></h5>
   <h3><b>Password</b></h3>
   <input type="password" id="password" name="fpassword" placeholder="New Password">
-  <h5 style="color:red">
+  <h5 style="color:red"> //h5
   <?php
   if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $password = $_POST['fpassword'];
