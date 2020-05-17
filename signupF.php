@@ -126,7 +126,7 @@ echo "Your password is ".strlen($_POST["fpassword"])." characters. Password must
 } 
 }
 ?></h5>
- <h3><b>Confirm Password</b></h3>
+ <h3><b>Confirm Password</b></h3>  Pasword
   <input type="password" name="c_password" placeholder="Confirm Password">
   <h5 style="color:red">
 <?php
