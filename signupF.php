@@ -12,6 +12,8 @@ $(document).ready(function(){
   $("#test").slideToggle("slow");
   var testRole = $("#btn2").text().trim(); 
   if(testRole=="Click to open"){
+	  
+	  
     $("#btn2").text("Click to close");
   }
   else{
