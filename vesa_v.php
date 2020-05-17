@@ -174,7 +174,7 @@ function myFunction() {
   <section>
     <div style="float:left; margin: 0 0 0 3em;">
       <h3 style="text-align: left; padding: 1.5em 0 0 1.5em">Interesting facts about football:</h3>
-      <ol>
+      <ol> //lista
         <li>Football is the most watched and most played sport on earth.
           <ul>
             <li>It has 4 Billion Fans.</li>
