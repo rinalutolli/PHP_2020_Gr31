@@ -131,7 +131,7 @@ else{ echo "Please choose any gender button.";}
 }
 ?>
   </h5>
-  <h3><b>Email</b></h3>
+  <h3><b>Email</b></h3> // email
   <input type="text" id="email" name="email" placeholder="Enter Email">
    <h5 style="color:red">
   <?php
