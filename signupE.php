@@ -113,7 +113,7 @@ $(document).ready(function(){
     }
 }
 ?></h5>
- <h3><b>Birthday</b></h3>
+ <h3><b>Birthday</b></h3> //birthday
   <input type="date" id="birthday" name="birthday">
   <h5 style="color:red">
   <?php
