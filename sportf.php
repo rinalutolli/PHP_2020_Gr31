@@ -137,7 +137,7 @@ function myFunction() {
   <script type="text/javascript" src="./js/js.js"></script>
 </head>
 <body>
-   <header>
+   <header> //headeri
     <div id="u1">
     <nav id="mainMenu">
     <ul>
