@@ -79,7 +79,7 @@ $(document).ready(function(){
   <h4 id="rv"><b>Sign Up to be a part of us</b></h4><br/>
   <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
   <h3><b>Name</b></h3>
-  <input type="text" id="name" name="fname" placeholder="Enter Name">
+  <input type="text" id="name" name="fname" placeholder="Enter Name"> // Emri
   <h5 style="color:red">
   <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
