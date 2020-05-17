@@ -2,6 +2,10 @@
 PROJEKTI SEMESTRAL NE LENDEN PROGRAMIMI NE INTERNET
 
 PUNUAR:
+Rina Lutolli 
+Elda Lamaxhema
+Vesa Qilerxhiu
+Fjolla Hajdarhoxha
 
 FIEK
 PRISHTINE MAJ 2020
