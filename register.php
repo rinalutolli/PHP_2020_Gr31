@@ -76,7 +76,7 @@
 			</div>
 		";
 			
-			//regjistrimi i userave
+			//regjistrimi i userave eee
 		exit();
 		}
 
