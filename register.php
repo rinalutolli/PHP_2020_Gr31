@@ -22,7 +22,7 @@
 		echo "
 			<div class='alert alert-warning'>
 				<b>First name '$f_name' is not valid..! First name must start with capital letter!</b>
-			</div>
+		//hshjhsjsjs	</div>
 		";
 		exit();
 		}
