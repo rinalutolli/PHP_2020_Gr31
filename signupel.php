@@ -145,7 +145,7 @@ else{ echo "Please choose any gender button.";}
     }
 }
 ?></h5>
-  <h3><b>Password</b></h3>
+  <h3><b>Password</b></h3> //Password
   <input type="password" id="password" name="fpassword" placeholder="New Password">
   <h5 style="color:red">
   <?php
