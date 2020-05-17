@@ -12,7 +12,7 @@
 	$emailValidation = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9]+(\.[a-z]{2,4})$/";
 	$number = "/^[+][383][0-9]+$/"; 
 
-
+         kushtet preg match
 	if(empty($f_name) || empty($l_name) || empty($email) || empty($password1) || empty($mobile) || empty($gender) || empty($birthday)){
 		echo "<div class='alert alert-danger'>Please fill all the fields!</div>";		
 		exit(0);
