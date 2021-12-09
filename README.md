@@ -8,4 +8,4 @@ Vesa Qilerxhiu,
 Fjolla Hajdarhoxha.
 
 FIEK
-PRISHTINE MAJ 2020
+PRISHTINE
